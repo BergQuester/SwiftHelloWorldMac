@@ -12,9 +12,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                             
     @IBOutlet var window: NSWindow
 
+    @IBOutlet var name : NSTextField
+    @IBOutlet var outputField : NSTextField
 
     func applicationDidFinishLaunching(aNotification: NSNotification?) {
         // Insert code here to initialize your application
+        self.outputField.stringValue = "Hello, World!"
     }
 
     func applicationWillTerminate(aNotification: NSNotification?) {
@@ -22,5 +25,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
 
+    @IBAction func buttonPushed(sender : AnyObject) {
+        var name = self.name.stringValue
+        
+        if name.isEmpty {
+            self.outputField.stringValue = "Come again?"
+        }
+        else {
+            self.outputField.stringValue = "Hello, \(self.name.stringValue)!"
+        }
+    }
 }
 
